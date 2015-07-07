@@ -48,7 +48,11 @@
         <a class="navbar-brand" href="#">Twitterapp</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
+          <% if params[:lang] == 'np' %>
+            <li><%= link_to I18n.translate('click', :locale => params[:lang]), "/homes?lang=en"  %></li>
+          <% else %>
+            <li><%= link_to I18n.translate('click', :locale => params[:lang]), "/homes?lang=np"  %></li>
+          <% end %>
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
