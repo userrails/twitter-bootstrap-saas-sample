@@ -44,4 +44,4 @@ group :development, :test do
 end
 
 gem "therubyracer"
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'bootstrap-sass', '~> 3.3.5'
