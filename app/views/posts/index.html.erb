@@ -2,6 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<div id="tag_cloud">
+  <% tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -10,6 +17,7 @@
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>Tag</th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +36,9 @@
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
         </td>
+        <td>
+          <%= raw post.tag_list.map {|t| link_to t, tag_path(t) }.join(', ') %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -36,3 +47,13 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_post_path,
             :class => 'btn btn-primary' %>
+
+<style>
+  #tag_cloud {
+    width: 480px;
+    line-height: 1.6em;
+    .s {font-size: 0.8em;}
+    .m {font-size: 1.2em;}
+    .l {font-size: 1.8em;}
+  }
+</style>

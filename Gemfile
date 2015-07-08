@@ -46,3 +46,4 @@ end
 gem "therubyracer"
 gem 'bootstrap-sass', '~> 3.3.5'
 gem "amqp", "~> 1.5.0"
+gem 'acts-as-taggable-on', '~> 3.5.0'

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'homes/index'
-
+  get 'posts/:tag' => 'posts#index', as: :tag
   resources :posts
   resources :homes
 
